@@ -1,0 +1,309 @@
+What belongs to a starter kit
+- Package Management
+- Bundling
+- Minification
+- Sourcemaps
+- Transpiling
+- Dynamic HTML Generation
+- Centralized HTTP
+- Mock API framework
+- Component libraries
+- Development Webserver
+- Linting
+- Automated testing
+- Continuous integration
+- Automated deployment
+- working example app
+
+Setting up git
+
+sharing work-in-progress
+- local tunnel -- creates a hole in firewall to create a Webserver server
+  - npm install localtunnel -g
+  - start your app
+  - lt --port 3000
+
+- ngrok -- creates a hole in firewall to create a Webserver server.
+  - Sign up
+  - install ngrok
+  - install authtoken
+  - Start your app
+  - ./ngrok http 3000
+  - secure with a password protection
+- Surge
+   - npm install -g Surge
+   - surge
+
+- now - doesnot create a hole in the firewall
+  - depploys your app to the cloud for reviewing, has back-end capabilities.
+  - Any directory that contain package.json can be uploaded to the cloud
+  ========
+  - nstall it globally "npm install -g now"
+  - Create start script
+  - type now.
+  - you dont need to keep your machine on.
+
+
+
+Automation
+
+Grunt
+Gulp - In memory streams
+    - fast
+    - code over configuration
+    - large plugin ecosystem
+
+npm scripts
+- Declared in package.json
+- Leverage your OS' commandline
+- Directly use npm packages
+- call sepreate node scripts
+- Convention-based pre/post hooks
+
+why npm scripts
+
+- Use tools Directly
+- No need for seperate plugins
+- simpler debugging
+- Better docs (documantation)
+- easy to learn
+- simple
+
+Transpiling:
+ Almost all the languages has some form of transpiling to JavaScript.
+ The major three that are standardized and mature ones include:
+ - Babel;
+    -- Modern, standards-based JS, today. Transpiles the latest JS to
+      ES5 so that you can use all the latest features of the current JS version.
+- TypeScript - superset of JS
+  Adds functionality to JavaScript i.e type annotations which add type
+  safety to JavasScript and therefore:
+    -- Enhanced autocompletion
+    -- safer refactoring
+    -- Clear intent that aids in large maintenance on large code basses
+
+
+Babel configuration
+- .babelrc
+- package.json
+
+Bundling:
+  - npm packages uses commonJS, works just fine with Node, unlike the browser.
+  - package project into file(s)
+  - Improve Node performance - nodes require is slow
+Module format:-
+  + IIFE - immedietely invoked function expression
+  + AMD - Asynchronous Module Definition.
+  + CJS - commonJS -- popularised by node
+  + UMD - Universal Module Definition
+  + ES6 Modules
+
+Why ES6
+ + standardized
+ + statically analyzed-- predictable, dynamic is unpredictable.
+  - improved autocompletion.
+  - intelligent refactoring.
+  - fails fast.
+  - Tree shaking - eliminating dead code.
+ + easy to read
+  - Named Exports
+  - Default Exports
+
+Types of bundlers
+- RequreJS popularised AMD pattern
+
+===Modern ones===
+
+- Browserify - simple
+  -- was the first to reach mss autocompletion
+  -- Bundle npm packages for the web
+  -- Large plugin ecosystem -- Minification, linting, transpiling etc.
+
+- Webpack - Comprehensive
+  -- Bundles more than just JS.
+  -- import CSS, images, etc like JS.
+  -- Built in hot-reloading eb server.
+
+- Rollup - Tree-shaking performance
+  -- was the first to implement tree shaking.
+  -- fast loading of production code
+  -- quite new.
+  -- Great for library authors
+  -- No hot reloading and code splitting yet.
+
+- JSPM - runtime loader, package manager
+  - uses systemJs a universal module loader
+  - Can load modules at runtime
+  - Can install from npm, git.
+  - Uses Rollup
+
+
+Sourcemaps
+
+code is much hard to debug from the browser for it is transpiled and bundled.
++ Generating sourcemaps is key here.
+  sourcemaps map the code back to th original code.
+  Sourcemaps is only downloaded when dev tools are opened.helping with the bundles.
+
+  - type "debugger" at the line of suspecion.
+
+Linting:
+
+Why lint:-
+- Enfore Consistency:
+ = Curly brace position
+ = Confirm/alert
+ = Trailing commas
+ = evals
+ = global
+
+- Avoiding mistakes:
+  = Extra paranthesis
+  = overwriting function
+  = Assignment in conditional
+  = Missing default case in switch
+  = debugger / console.log
+
+Linters for JS
+ - JSLint
+ - JS Hint
+ - ESLint
+
+ use ESLINT
+    + Decisions
+      - config format
+
+      - Built-in rules
+        Warnings: Warnings or Error
+          Can continue Development
+          Can be ignored
+          Team must agree: fix Warnings
+
+        Errors:
+          Breaks the build
+          Cannot be ignored
+          Team is forced to comply
+
+      - plugins:
+
+      - Preset:
+          - from scratch
+          - standard rules with some custome twicks
+          - Airbnb
+          - standardJS
+
+
+How to run ESLint:
+Eslint lacks watching setting bult-in.
+to run ESlint automatically:
+ + ESlit-loader by Webpack.
+    - re-lints all files upon save.
+ + Eslint-watching.
+    - ESLint wrapper that adds file watch
+    - not tied to Webpack -- bundler free.
+    - Better warning/error formating
+    - displays clean message.
+    - Easily lint tests and build scripts too
+
+NB--ESlint doesnot support many JS experimental features.
+supports ES6/7 natively.
+supports object-spread experimental feature.
+
+Babel-ESLint supports all stages of new features.
+
+Why lint via automated Build process.
+- One place to check
+- Universal configuration
+- Part of continous integration
+
+ESLint set up
+--ESLint Recommendation
+--eslint-watch
+
+
+Testing and Continous Integration
+Unit testing is commonly used.
+it focused on testing a single module/function in an automated fashion
+
+others include:
+Intergration Testing
+Automated UI
+
+6 Decision the need be made for Unit Testing
+1. framework
+  - Mocha --Most pupular
+  - Jasmine -- assertion includes assertion librarry
+  - tape -- simple
+  - QUnit --oldest for JQuery
+  - Ava
+  - Jest --from facebook for React
+
+2. Assertion library
+  - mocha doesnt have assertion library so we have to choose
+  - assertion is setting what to expect
+  - Chai is the most popular assertion library.
+
+3. Helper libraries
+  - JSDOM is an imoplementation of the browser DOM, runs DOM-related tests without opening a browser.
+  - Cheerio -- JQury for the server
+            -- Query virtual DOM using JQuery selectors
+
+4. Where to run tests
+  - Browser - Karma Testem
+  - Headless browser - a browser that doesnt have a interface
+    - PhantomJS
+  - In-memory DOM
+    - JSDOM
+5. where to place tests
+  - Centralized
+    - less noise in src folder
+    - deployment confusion
+    - inertia
+  - Alongside
+    - easy imports
+    - clear visibility
+    - convenent to opened
+    - no recreating folder structure
+    - easy files move
+
+6. When to run tests
+  - with unit test, whenever you save
+    - rapid feedback
+    - fasilitates TDD
+    - automatic = low friction
+    - increase test visibility
+
+
+Continous Integration (CI).
+CI is Ensuring the committed code works fine on other machines.
+
+why CI:
+  - Forgot to commit new file
+  - Forgot to update package.json
+  - Commit doesnt run cross-platform
+  - Node version conflicts
+  - Bad merge
+  - Didn't run testt
+  - Catch mistakes quckly
+
+What doe CI server do:
+- Runs automatic build
+- Run your tests
+- check code coverage
+- automate deployment
+
+CI servers:
+- Travis CI Linux-based
+- Appveyor - windows
+- Jenkins - highly configurable
+- CircleCI
+- Semaphore
+- SnapCI
+
+Travis CI
+
+
+
+
+
+
