@@ -1,0 +1,24 @@
+#Test against  this version of node
+environment:
+  matrix:
+  # node.js
+  - nodejs_version: "6"
+
+# install scripts. (runs repo cloning)
+install:
+  # Get the latest stabel version or io.js
+  - ps: install-Product node $env:nodejs_version
+  - npm install
+
+  # post-install scripts.
+  test_script:
+    # Output useful info for degugging.
+    - node --version
+    - npm --version
+    # run tests
+    - npm test
+
+    # Dont actually build
+    build: off
+
+

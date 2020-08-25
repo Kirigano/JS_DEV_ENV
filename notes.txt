@@ -302,8 +302,61 @@ CI servers:
 
 Travis CI
 
+HTTP call approaches
+
+Node
+  - Http
+  - requests
+
+Browser
+    - XMLHttpRequest
+    - JQuery
+    - framework-based
+    - Fetch -- some browsers lack support
+
+Node n browser
+- isomorphic-Fetch
+- xhr
+- SuperAgent
+- Axios
+
+Why Centralize API calls
+ - configure all calls
+ - Handle preloader logic
+ - Handle errors
+ - single seam for mocking
+
+setting up Fetch
 
 
+Why Mock HTTP?
+ - Unit Testing
+ - Instant response
+ - Keep Working when services are down
+ - Rapid prototyping
+ - Avoid inter-team bottlenecks
+ - Work offline
 
+How to Mock
+  Nock
+  Static JSON
+  Create development Webserver
+    - api-mock
+    - JSON server
+    - JSON Schema faker
+    - Browsersync
+    - Express, etc.
 
+Our Plan for Mocking HTTP
+  1. Declare our Schema:
+    - JSON Schema faker
+  
+  2. Generate Random Data:
+    - faker.json github.com/Marak/faker.js/wiki,
+                 marak.github.io/faker.js/index.html
+                 --read Json schema faker docs for details
+    - chance.json
+    - randexp.js
 
+  3. Serve Data via API
+    - JSON Server 
