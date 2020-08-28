@@ -350,7 +350,7 @@ How to Mock
 Our Plan for Mocking HTTP
   1. Declare our Schema:
     - JSON Schema faker
-  
+
   2. Generate Random Data:
     - faker.json github.com/Marak/faker.js/wiki,
                  marak.github.io/faker.js/index.html
@@ -359,4 +359,25 @@ Our Plan for Mocking HTTP
     - randexp.js
 
   3. Serve Data via API
-    - JSON Server 
+    - JSON Server
+
+
+DEMO APP
+ Why Demo App
+  - Directory structure and file naming
+  - framework usage
+  - testing
+  - Mock API
+  - Automated deployment
+
+Codifies Desicions
+interactive example of working starter
+
+Project Structure.
+  put JS code in .js not html script transpiling
+    - to utilize an optimized dev environment
+      + for testing
+      + linting
+      + Reuse
+      + Transpiles
+      + dependancies etc.
