@@ -374,10 +374,29 @@ Codifies Desicions
 interactive example of working starter
 
 Project Structure.
-  put JS code in .js not html script transpiling
+ 1. put JS code in .js not html script transpiling
     - to utilize an optimized dev environment
       + for testing
       + linting
       + Reuse
       + Transpiles
       + dependancies etc.
+
+  2. Organize by feature rather than by file type.
+
+  3. Extract logic to POJOs - plain old JavaScript objects.
+  - example "github coryhouse/react-slingshot"
+
+
+Minification
+  - Shortens variables and function names
+  - Removes comments
+  - Removes whitespaces and new Linters
+  - Dead code elimination/tree-shaking
+  - Debug via sourcemaps
+
+Sourcemaps
+Dynamic HTML
+Cache busting
+Bundle splitting
+Error logging
