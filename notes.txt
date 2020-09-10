@@ -400,6 +400,7 @@ Sourcemaps
     -
   + Cache busting
   + Bundle splitting
+
   + Error logging
 
 Why manipulate HTML for production;
@@ -407,4 +408,83 @@ Why manipulate HTML for production;
   - Handle dynamic bundle names
   - inject production only resources
   - Minify
+
+Cache busting:
+to save bandwith and avoid unnesary http requests you need cache busting
+
+- save HTTP requests upto 1 year,
+- speeds page load
+- force request for latest version
+
+== How to:
+  - Hash bundle name
+  - Generate HTML dynamically.
+
+setting up cache busting
+
+
+Error logging
+== Error Logging services include:
+  - TrackJS - specific for JS
+  - Sentry
+  - New Relic - broad
+  - Raygun
+
+  how to evaluate an error logging services
+   == Error Metadata
+      - Browser
+      - Stack trace
+      - Previous actions
+      - Custom API for Enhanced tracking
+
+   == Notifications and Intergration
+   == Analytics and filtering
+   == Pricing
+
+  Setting up TrackJS
+
+
+
+Production Deployment
+  1.  Seperating UI and API
+  why - simple, low-risk, UI only depploys,static ui is easy to deploy.
+
+      - speration of concerns,
+        == UI and API teams
+        == Less to understand
+        == Scale back-end seperately
+
+      - Cheap  UI hosting
+      - UI can be served via a CDN
+      - Use the API tech you like
+
+      Cloud hosting
+        - Amazon web services
+        - MS Azure
+        - Heroku
+        - Firebase
+        - Google Cloud Platform.
+        - Netifly - staic files only
+        - Github pages - staic files only
+        - surge - static files only
+
+Updating Starter Kit
+-- By hand, but can also be automated using these tools
+
+1. Yeoman
+  - Commit to version control system
+  - Scaffold over the existing project
+  - resolve conflicts manually
+
+2. Github
+- Host on github
+- Fork starter kit for new project
+- Pull changes from master
+
+3. npm
+ - Encapsulate kit in npm package
+
+
+
+
 
